@@ -12,7 +12,17 @@ class AddBooks extends Library{
         if (!AddBooks.isValidISBN(book.isbn)) {
             throw new Error('Invalid ISBN format');
         }
-        
+        if(Library.books.some(b=>b.isbn===book.isbn || b.title===book.title)){
+            const mybook=Library.books.find(b=>b.isbn===book.isbn);
+            if(mybook.isbn===book.isbn && mybook.title===book.title && mybook.author===book.author && mybook.year===book.year)
+            {
+                mybook.count++;
+                return 'book count increse for this book';
+            }
+            else{
+            throw new Error('isbn or book detail is wrong');
+            }
+        }
 
         Library.books.push(book);
     } 
