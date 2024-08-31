@@ -57,5 +57,12 @@ describe('Borrow book from the library',()=>{
         //return msg if book is available for borrow
         expect(success).toEqual('book available for borrow');
     });  
+
+    test('unavailable books should not be borrowed',()=>{
+        // here web technology book is already borrowed so it should not be borrowed
+        const chk=borrowBooksInstance.borrowBooks('9971-1-2222-3');
+        //it return string that all books are borrowed by someone
+        expect(chk).toEqual('all books already has been borrowed');    
+    }); 
     
 });
