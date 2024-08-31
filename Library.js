@@ -34,4 +34,14 @@ class AddBooks extends Library{
     }
 }
 
-module.exports = {Library,AddBooks};
+class BorrowBooks extends Library{
+    borrowBooks(isbn){
+        const mybook=Library.books.find(b=>b.isbn===isbn);
+        if(mybook && mybook.count!==0){
+            mybook.count--;
+            return 'book available for borrow';
+        }
+    }
+}
+
+module.exports = {Library,AddBooks,BorrowBooks};

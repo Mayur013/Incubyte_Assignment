@@ -1,4 +1,4 @@
-const {AddBooks} = require('../Library');
+const {AddBooks,BorrowBooks} = require('../Library');
 const Book = require('../Book');
 
 describe('Adding books to the library',()=>{
