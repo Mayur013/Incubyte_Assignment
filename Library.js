@@ -44,6 +44,9 @@ class BorrowBooks extends Library{
         else if(mybook && mybook.count===0){
             return 'all books already has been borrowed';
         }
+        else{
+            throw new Error('requested book does not exist');
+        }
     }
 }
 
