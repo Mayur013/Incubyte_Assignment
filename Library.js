@@ -41,6 +41,9 @@ class BorrowBooks extends Library{
             mybook.count--;
             return 'book available for borrow';
         }
+        else if(mybook && mybook.count===0){
+            return 'all books already has been borrowed';
+        }
     }
 }
 
