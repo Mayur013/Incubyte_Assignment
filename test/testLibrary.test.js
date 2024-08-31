@@ -14,4 +14,10 @@ describe('Adding books to the library',()=>{
         // check that allbooks of library contains added book
         expect(addBooksInstance.getBooks()).toContainEqual(book);
     }); 
+
+    test('should handle invalid isbn format',()=>{
+        const book1= new Book('9971-1-2222-','web technology','ruby','2007');
+        //isbn checked before adding book, error will be thown on invalid isbn
+        expect(() => addBooksInstance.addBooks(book1)).toThrow('Invalid ISBN format');
+    });
 });
