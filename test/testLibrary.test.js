@@ -65,4 +65,10 @@ describe('Borrow book from the library',()=>{
         expect(chk).toEqual('all books already has been borrowed');    
     }); 
     
+    test('requested book does not exist or isbn is null',()=>{
+        //here, book with given isbn does not exist so it throws error
+        expect(()=>borrowBooksInstance.borrowBooks('9971-5-0210-8')).toThrow('requested book does not exist');
+        //here isbn is null so it throws error
+        expect(()=>borrowBooksInstance.borrowBooks()).toThrow('requested book does not exist');
+    });
 });
