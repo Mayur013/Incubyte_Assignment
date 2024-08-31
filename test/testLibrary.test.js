@@ -31,4 +31,10 @@ describe('Adding books to the library',()=>{
         // if isbn matches in database but other details does not match then it return as book details is wrong 
         expect(() => addBooksInstance.addBooks(book1)).toThrow('isbn or book detail is wrong');
     });
+
+    test('haldle invalid or insufficient data',()=>{
+        const book= new Book('99921-58-10-4','liang','2004');
+        // throws error when data is missing
+        expect(() => addBooksInstance.addBooks(book)).toThrow('Invalid book data');
+    });
 });
