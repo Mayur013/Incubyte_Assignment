@@ -38,3 +38,24 @@ describe('Adding books to the library',()=>{
         expect(() => addBooksInstance.addBooks(book)).toThrow('Invalid book data');
     });
 });
+
+describe('Borrow book from the library',()=>{
+    let borrowBooksInstance;
+    let addBooksInstance;
+    beforeAll(()=>{
+
+        borrowBooksInstance=new BorrowBooks();
+        addBooksInstance=new AddBooks();
+    });
+
+    test('should borrow available book ',()=>{
+        // add book in database
+        const book1= new Book('9971-1-2222-3','web technology','ruby','2007');
+        addBooksInstance.addBooks(book1);
+        // borrow book 
+        const success=borrowBooksInstance.borrowBooks('9971-1-2222-3');
+        //return msg if book is available for borrow
+        expect(success).toEqual('book available for borrow');
+    });  
+    
+});
