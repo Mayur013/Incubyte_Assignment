@@ -1,3 +1,6 @@
+const {AddBooks} = require('../Library');
+const Book = require('../Book');
+
 describe('Adding books to the library',()=>{
 
     //create instance of AddBooks class for adding book
