@@ -20,4 +20,15 @@ describe('Adding books to the library',()=>{
         //isbn checked before adding book, error will be thown on invalid isbn
         expect(() => addBooksInstance.addBooks(book1)).toThrow('Invalid ISBN format');
     });
+
+    test('should handle duplicates for the existed book and for wrong info book',()=>{
+        // for all copies of book, isbn is same
+        const book= new Book('99921-58-10-7','java for dev','liang','2004');
+        const msg=addBooksInstance.addBooks(book);
+        // if book already exist then it increases book count
+        expect(msg).toEqual('book count increse for this book');
+        const book1= new Book('99921-58-10-7','java for ev','liang','2004');
+        // if isbn matches in database but other details does not match then it return as book details is wrong 
+        expect(() => addBooksInstance.addBooks(book1)).toThrow('isbn or book detail is wrong');
+    });
 });
