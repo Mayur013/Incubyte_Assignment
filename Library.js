@@ -50,4 +50,16 @@ class BorrowBooks extends Library{
     }
 }
 
-module.exports = {Library,AddBooks,BorrowBooks};
+class ReturnBooks extends Library{
+    returnBooks(isbn){
+        const mybook=Library.books.find(b=>b.isbn===isbn);
+        if(mybook){
+            //if book belongs to the library then it increase copy_count and return msg
+            mybook.count++;
+            return 'Book returned successfully';
+        }
+        
+    }
+}
+
+module.exports = {Library,AddBooks,BorrowBooks,ReturnBooks};
