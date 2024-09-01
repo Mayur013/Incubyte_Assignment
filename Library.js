@@ -58,6 +58,9 @@ class ReturnBooks extends Library{
             mybook.count++;
             return 'Book returned successfully';
         }
+        else{
+            throw new Error('book does not belong to library');
+        }
         
     }
 }
