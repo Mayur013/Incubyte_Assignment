@@ -1,3 +1,6 @@
-Library Management System
-### For run this project, run 'npm install' 
-### Then npm run test
+# Library-Management-System
+
+## Steps To Follow
+
+- For run this project, run ```npm install``` in Terminal
+- Then run ```npm run test```
