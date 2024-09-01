@@ -72,3 +72,26 @@ describe('Borrow book from the library',()=>{
         expect(()=>borrowBooksInstance.borrowBooks()).toThrow('requested book does not exist');
     });
 });
+
+describe('return book to the library',()=>{
+    let borrowBooksInstance;
+    let addBooksInstance;
+    let returnBooksInstance;
+    beforeAll(()=>{
+
+        borrowBooksInstance=new BorrowBooks();
+        addBooksInstance=new AddBooks();
+        returnBooksInstance=new ReturnBooks();
+    });
+
+    test('should return book which belongs to the library',()=>{
+        const book =new Book('85-359-0277-5','software engineering','Scribner','2010');
+        addBooksInstance.addBooks(book);
+        borrowBooksInstance.borrowBooks('85-359-0277-5');
+        //after borrowing book, it should able to return
+        const status=returnBooksInstance.returnBooks('85-359-0277-5');
+        //it return successfully return msg
+        expect(status).toEqual('Book returned successfully');
+
+    });
+});
