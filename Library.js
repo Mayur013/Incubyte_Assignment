@@ -65,4 +65,10 @@ class ReturnBooks extends Library{
     }
 }
 
-module.exports = {Library,AddBooks,BorrowBooks,ReturnBooks};
+class ViewAvailableBook{
+    viewAvailableBook(){
+        return Library.books.filter(b=>b.count>0);
+    }
+}
+
+module.exports = {Library,AddBooks,BorrowBooks,ReturnBooks,ViewAvailableBook};
