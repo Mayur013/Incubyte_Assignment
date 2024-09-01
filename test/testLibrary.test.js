@@ -94,4 +94,9 @@ describe('return book to the library',()=>{
         expect(status).toEqual('Book returned successfully');
 
     });
+
+    test('unable to return book which does not belong to library',()=>{
+        // throws error if book does not belong to library
+        expect(()=>returnBooksInstance.returnBooks('0-85131-041-9')).toThrow('book does not belong to library');
+    });
 });
