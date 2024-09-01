@@ -100,3 +100,44 @@ describe('return book to the library',()=>{
         expect(()=>returnBooksInstance.returnBooks('0-85131-041-9')).toThrow('book does not belong to library');
     });
 });
+
+describe('view available books',()=>{
+    let borrowBooksInstance;
+    let addBooksInstance;
+    let returnBooksInstance;
+    let viewBooksInstance;
+    beforeAll(()=>{
+
+        borrowBooksInstance=new BorrowBooks();
+        addBooksInstance=new AddBooks();
+        returnBooksInstance=new ReturnBooks();
+        // viewbook instance
+        viewBooksInstance=new ViewAvailableBook();
+        //empty the array for better understanding
+        Library.books=[];
+    });
+
+    test('should display all books which has copy_count >0 ',()=>{
+        const book=new Book('93-86954-21-4','cpp','j.p. arya','2020');
+        addBooksInstance.addBooks(book);
+        // add book into library and then view available books
+        const result=viewBooksInstance.viewAvailableBook();
+        console.log(result)
+        //library has only 1 book so it should return added book
+        expect(result).toEqual([book]);
+
+        borrowBooksInstance.borrowBooks('93-86954-21-4');
+        // borrow book from library and then view available books
+        const result1=viewBooksInstance.viewAvailableBook();
+        //available book is borrowed so it should return empty array
+        expect(result1).toEqual([]);
+
+        returnBooksInstance.returnBooks('93-86954-21-4');
+        // return book to library and then view available books
+        const result2=viewBooksInstance.viewAvailableBook();
+        //it should return book which is just returned
+        expect(result2).toEqual([book]);
+ 
+    });
+    
+});
